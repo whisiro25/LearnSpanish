@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+</head>
+
+<body>
+	<h1>Help</h1>
+	<h4>Typing Spanish Characters</h4>
+	<h5>Windows</h5>
+	<p>To type in Spanish, you could set up an international keyboard on your computer. However, if you don't wish to do that, you can instead use ASCII codes. To do so, hold down the ALT key and then type the appropriate code. The following lists shows the combinations for the different characters.</p>
+	<table>
+		<tr>
+			<th>á</th>
+			<th>Alt + 160</th>
+			<th>Á</th>
+			<th>Alt + 0193</th>
+		</tr>
+		<tr>
+			<th>é</th>
+			<th>Alt + 130</th>
+			<th>É</th>
+			<th>Alt + 0201</th>
+		</tr>
+		<tr>
+			<th>í</th>
+			<th>Alt + 161</th>
+			<th>Í</th>
+			<th>Alt + 0205</th>
+		</tr>
+		<tr>
+			<th>ó</th>
+			<th>Alt + 162</th>
+			<th>Ó</th>
+			<th>Alt + 0211</th>
+		</tr>
+		<tr>
+			<th>ú</th>
+			<th>Alt + 163</th>
+			<th>Ú</th>
+			<th>Alt + 0218</th>
+		</tr>
+		<tr>
+			<th>ñ</th>
+			<th>Alt + 164</th>
+			<th>Ñ</th>
+			<th>Alt + 165</th>
+		</tr>
+		<tr>
+			<th>ü</th>
+			<th>Alt + 0252</th>
+			<th>Ü</th>
+			<th>Alt + 0220</th>
+		</tr>
+		<tr>
+			<th>¡</th>
+			<th>Alt + 173</th>
+			<th>¿</th>
+			<th>Alt + 168</th>
+		</tr>
+	</table>
+	<p><i>Note:</i> laptop users might need to take additional steps such as pressing the Fn key. If the above does not work, you can try searching for additional info specific to your computer. </p>
+
+	<h5>Mac</h5>
+	<p>Using Spanish characters on a Mac is simpler than on Windows. For accented vowels, hold down the option and e keys, release, and then press the key corresponding to the vowel you want to accent. For ñ, hold down option and n, release, and then hit n again. The following chart shows the specific combinations. </p>
+	<table>
+		<tr>
+			<th>á</th>
+			<th>Option + e,  then A</th>
+			<th>Á</th>
+			<th>Option + e,  then Shift + A</th>
+		</tr>
+		<tr>
+			<th>é</th>
+			<th>Option + e,  then E</th>
+			<th>É</th>
+			<th>Option + e,  then Shift + E</th>
+		</tr>
+		<tr>
+			<th>í</th>
+			<th>Option + e,  then I</th>
+			<th>Í</th>
+			<th>Option + e,  then Shift + I</th>
+		</tr>
+		<tr>
+			<th>ó</th>
+			<th>Option + e,  then O</th>
+			<th>Ó</th>
+			<th>Option + e,  then Shift + O</th>
+		</tr>
+		<tr>
+			<th>ú</th>
+			<th>Option + e,  then U</th>
+			<th>Ú</th>
+			<th>Option + e,  then Shift + U</th>
+		</tr>
+		<tr>
+			<th>ñ</th>
+			<th>Option + n,  then N</th>
+			<th>Ñ</th>
+			<th>Option + n,  then Shift + N</th>
+		</tr>
+		<tr>
+			<th>ü</th>
+			<th>Option + u,  then U</th>
+			<th>Ü</th>
+			<th>Option + u,  then Shift + U</th>
+		</tr>
+		<tr>
+			<th>¡</th>
+			<th>Option + 1</th>
+			<th>¿</th>
+			<th>Option + ?</th>
+		</tr>
+	</table>
+</html>
+
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	
+</script>
+</head>
+<body>
+	<h1>Quiz</h1>
+	<p>{{question}} </p>
+	{% for key, value in choices.items %}
+		<input type="radio" id={{value}} value={{value}} name="ques">
+  		<label for=key id={{value}}label>{{value}}</label><br>
+	{% endfor %}
+	{% if question.ques_Type == 'FI' %}
+		<input type="text" id="in">
+	{% endif %}
+	<button type="submit" id="submit">Submit</button>
+
+</body>
+<script>
+	var ques = '{{ question|escapejs}}';
+	var ans = '{{ question.answer|escapejs}}';
+	var type = '{{ question.ques_Type|escapejs}}';
+	const submitButton = document.getElementById('submit');
+
+	function showResults(){}
+	function correctAns(){}
+
+	submitButton.addEventListener('click', showResults);
+
+	function showResults(){
+		if(type === 'MC'){
+			selectedVal = document.querySelector('input[name="ques"]:checked').value;
+			if(ans === selectedVal){
+				document.getElementById(selectedVal+'label').style.color = 'lightgreen';
+				correctAns();
+			}else{
+				if(selectedVal){
+					document.getElementById(selectedVal+'label').style.color = 'red';
+				}
+			}
+		}else if(type ==="FI"){
+			var inputVal = document.getElementById("in").value;
+			if(inputVal === ans){
+				alert("Correct!")
+			}
+		}
+
+	}
+
+	function correctAns(){
+		submitButton.parentNode.removeChild(submitButton);
+		var button = document.createElement("input");
+	    button.type = "button";
+	    button.value = "Next Question";
+	    button.onclick = function(){
+	    	window.location.reload(true); 
+	    }
+	    document.body.appendChild(button);
+
+	}
+	
+</script>
+
+</html>
+
+{% endblock %}

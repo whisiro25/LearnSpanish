@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+	<h1>{{title}}</h1>
+	<p>{{question}} </p>
+	{% if question.imgPath != '' %}
+		<img src="{% static question.imgPath %}">
+		<br>
+	{% endif %}
+	{% for key, value in choices.items %}
+		<input type="radio" id={{value}} value={{value}} name="ques">
+  		<label for=key id={{value}}label>{{value}}</label><br>
+	{% endfor %}
+	{% if question.ques_Type == 'FI' %}
+		<input type="text" id="in"> <br>
+	{% endif %}
+	<button type="submit" id="submit">Submit</button>
+
+</body>
+<script>
+	function getCookie(name) {
+	    var cookieValue = null;
+	    if (document.cookie && document.cookie != '') {
+	        var cookies = document.cookie.split(';');
+	        for (var i = 0; i < cookies.length; i++) {
+	            var cookie = jQuery.trim(cookies[i]);
+	            // Does this cookie string begin with the name we want?
+	            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+	                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+	                break;
+	            }
+	        }
+	    }
+	    return cookieValue;
+	}
+	var csrftoken = getCookie('csrftoken');
+	var ques = '{{ question|escapejs}}';
+	var ans = '{{ question.answer|escapejs}}';
+	var type = '{{ question.ques_Type|escapejs}}';
+	var path = '{{ question.resourcePath|escapejs}}';
+	var tries = 0;
+	const submitButton = document.getElementById('submit');
+
+	function showResults(){}
+	function showResourcePage(){}
+	function correctAns(){}
+
+	submitButton.addEventListener('click', showResults);
+	var txt = document.createElement("P");
+	document.body.appendChild(txt);
+
+	function showResults(){
+		if(type === 'MC'){
+			selectedVal = document.querySelector('input[name="ques"]:checked').value;
+			if(ans === selectedVal){
+				document.getElementById(selectedVal+'label').style.color = 'lightgreen';
+				correctAns();
+			}else{
+				if(selectedVal){
+					document.getElementById(selectedVal+'label').style.color = 'red';
+					if(++tries === 2){
+						showResourcePage();
+					}
+				}
+			}
+		}else if(type ==="FI"){
+			document.body.removeChild(txt);
+			var inputVal = document.getElementById("in").value.toLowerCase();
+			var ansNorm = ans.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+			var inputNorm = inputVal.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+			if(inputVal === ans.toLowerCase()){
+				correctAns();
+				txt.innerText = "Correct!"
+				document.body.appendChild(txt);
+			}else if(inputNorm === ansNorm){
+				correctAns();
+				txt.innerText = "Correct!"
+				document.body.appendChild(txt);
+				var para = document.createElement("P");             
+				para.innerText = "For help typing accents, please visit our ";  
+				var a = document.createElement('a');
+				a.setAttribute('href',"/help");
+				a.innerHTML = "help page.";   
+				para.appendChild(a);           
+				document.body.appendChild(para); 
+			}else{
+				txt.innerText = "Not quite! Try Again!"
+				document.body.appendChild(txt);
+				if(++tries === 2){
+					showResourcePage();
+				}
+			}
+
+		}
+
+	}
+
+	function correctAns(){
+		submitButton.parentNode.removeChild(submitButton);
+		var button = document.createElement("input");
+	    button.type = "button";
+	    button.value = "Next Question";
+	    button.onclick = function(){
+	    	tries = 0;
+	    	var xhttp = new XMLHttpRequest();
+	    	xhttp.open("POST", "/update_session/", true);
+	    	xhttp.setRequestHeader("X-CSRFToken", csrftoken);
+  			xhttp.send();
+	  		window.location.reload(true); 
+
+	    }
+ 
+	    document.body.appendChild(button);
+
+	}
+
+	function showResourcePage(){
+		if(path !== ""){
+			var para = document.createElement("P");             
+			para.innerText = "It might be a good idea to review ";  
+			var a = document.createElement('a');
+			a.setAttribute('href',path);
+			a.innerHTML = "here.";   
+			para.appendChild(a);           
+			document.body.appendChild(para); 
+		}
+	}
+	
+</script>
+
+</html>
+
+{% endblock %}

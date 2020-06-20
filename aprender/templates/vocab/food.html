@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		.box{border: 1px solid;}
+		.box:nth-of-type(odd) {background-color: #ffe6b3;}
+
+		h4 {
+			border: 1px solid;
+			text-align: center;
+		}
+
+		ul.dashed {
+		  list-style-type: none;
+
+		}
+
+		ul.dashed li:before {
+		  content: '\2014';
+		  position: absolute;
+		  margin-left: -20px;
+		}
+
+		.right{
+		 
+		    float:right; 
+		    margin-right:100px;
+		    width:40%;
+		}
+		.left{
+		    position:relative;
+	
+		    float:left;
+		    left:100px; 
+		    width:40%;
+		}
+
+	</style>
+
+</head>
+<body>
+	<h1>Food - La Comida</h1>
+	<div class="left">
+		<div class="box">
+			<h4>Vegetables - Las Verduras</h4>
+			<ul class="dashed">
+				<li>Broccoli - el brócoli</li>
+				<li>Carrot - la zanahoria</li>
+				<li>Corn - el maíz</li>
+				<li>Green Beans - las judías verdes</li>
+				<li>Lettuce - la lechuga</li>
+				<li>Onion - la cebolla</li>
+				<li>Potato - la patata, la papa</li>
+				<li>Tomato - el tomate</li>
+			</ul>
+		</div><br />
+		<div class="box">
+			<h4>Fruits - Las Frutas</h4>
+			<ul class="dashed">
+				<li>Apple - la manzana</li>
+				<li>Banana - el plátano</li>
+				<li>Blackberry - la mora</li>
+				<li>Blueberry - el arándano</li>
+				<li>Cantaloupe - el melón</li>
+				<li>Cherry - la cereza</li>
+				<li>Coconut - el coco</li>
+				<li>Grape - la uva</li>
+				<li>Lemon - el limón</li>
+				<li>Orange - la naranja</li>
+				<li>Peach - el durazno</li>
+			    <li>Pineapple - la piña</li>
+				<li>Strawberry - la fresa</li>
+				<li>Watermelon - la sandía</li>
+			</ul>
+		</div>
+		<br>
+		<div class="box">
+			<h4>Grains - Los Granos</h4>
+			<ul class="dashed">
+				<li>Bread - el pan</li>
+				<li>Cereal - el cereal</li>
+				<li>Rice - el arroz</li>
+				<li>Sandwich - el sándwich</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="right">
+		<div class="box">
+			<h4>Meat - El Carne</h4>
+			<ul class="dashed">
+				<li>Bacon - tocino</li>  
+				<li>Beef - carne de res</li>
+				<li>Chicken - pollo</li>
+				<li>Ham	- jamón</li>
+				<li>Hamburger - la hamburguesa</li>
+				<li>Hot dogs - las Salchichas</li>
+				<li>Pork - cerdo</li>
+			</ul>
+		</div> 
+		<br> 
+		<div class="box">
+			<h4>Dairy - La Lechería</h4>
+			<ul class="dashed">
+				<li>Cheese - el queso</li>
+		  	    <li>Cream - la crema</li>
+				<li>Butter - la mantequilla</li>
+			    <li>Eggs - los juevos</li>
+		    	<li>Ice cream - el helado</li>
+				<li>Milk - la lache</li>
+				<li>Yogurt - el yogur</li>
+			</ul>
+		</div>
+		<br> 
+		<div class="box">
+			<h4>Beverages - Las bebidas</h4>
+			<ul class="dashed">
+				<li>Beer - la cerveza</li>
+				<li>Coffee - el café</li>
+				<li>Juice - el jugo</li>
+		  	    <li>Lemonade - la limonada</li>
+		  	    <li>Tea - el té</li>
+				<li>Water - el agua</li>
+			</ul>
+		</div>
+		<br> 
+		<div class="box">
+			<h4>Tableware - La Vajilla</h4>
+			<ul class="dashed">
+				<li>Cup - la taza</li>
+				<li>Fork - el tenedor</li>
+				<li>Glass - el vaso</li>
+		  	    <li>Plate - el plato</li>
+		  	    <li>Knife - el cuchillo</li>
+				<li>Spoon - la cuchara</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
+
+{% endblock %}

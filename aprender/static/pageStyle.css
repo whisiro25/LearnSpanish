@@ -1,0 +1,26 @@
+table, th, td {
+  border: 1px solid black;
+
+}
+th.Subject { width: 40%; }
+table{
+	margin-left: auto;
+	margin-right: auto;
+}
+tr:nth-child(even) {background-color: #f2f2f2;}
+th 
+{
+    text-align: center; 
+    vertical-align: middle;
+}
+
+body {background-color: #fcfbf5;}
+
+.tab{
+    display: inline-block;
+    margin-left: 40px;
+}
+
+h1 {
+	text-align: center;
+}
