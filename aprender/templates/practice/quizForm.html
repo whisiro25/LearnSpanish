@@ -12,7 +12,7 @@
 	<h1>{{title}}</h1>
 	<p>{{question}} </p>
 	{% if question.imgPath != '' %}
-		<img src="{% static question.imgPath %}">
+		<img src="{% static question.imgPath %}" style="max-width:400px;height:auto;">
 		<br>
 	{% endif %}
 	{% for key, value in choices.items %}
